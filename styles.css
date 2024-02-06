@@ -1,0 +1,71 @@
+body {
+    display: flex; 
+    flex-direction: column;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    flex: 1; 
+    background-color: #358597;
+    color: #F4A896;
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    border: 2px #F4A896 solid; 
+    border-radius: 25px;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+button {
+    display: flex;
+    border: none;
+    padding: 5px;
+    border-radius: 25px;
+    background-color: #F4A896;
+    color: #358597;
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+}
+
+#grid-container {
+    display: flex; 
+    justify-content: center;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.row, .pixelate {
+    flex: 1; 
+    height: 5px; 
+    width: 5px; 
+}
+
+.pixelate {
+    
+    background-color: black;
+
+} 
+
+.column-border-first {
+    border-left: 2px  #358597 solid; 
+    border-top: 2px  #358597 solid; 
+    border-bottom: 2px  #358597 solid; 
+}
+
+.column-border-middle {
+    border-top: 2px  #358597 solid; 
+    border-bottom: 2px  #358597 solid; 
+}
+
+.column-border-end {
+    border-right: 2px  #358597 solid; 
+    border-top: 2px  #358597 solid; 
+    border-bottom: 2px  #358597 solid; 
+}
