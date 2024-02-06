@@ -98,7 +98,8 @@ function createPixels (userInput) {
             
             newRow.addEventListener('mouseover', () => {
                 newRow.classList.add('pixelate');
-                
+
+                newRow.style.backgroundColor = rgbString (); 
         })
     }
 
@@ -110,4 +111,14 @@ function deletePixels () {
     const deleteGrid = document.querySelector('#grid-container'); 
 
     deleteGrid.remove();
+}
+
+
+function rgbString () {
+    
+    rgba = Math.floor(Math.random() * 255);
+    rgbb = Math.floor(Math.random() * 255);
+    rgbc = Math.floor(Math.random() * 255);
+
+    return "rgb(" + rgba + "," + rgbb + "," + rgbc + ")"; 
 }
