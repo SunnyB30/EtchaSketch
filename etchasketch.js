@@ -96,10 +96,37 @@ function createPixels (userInput) {
             newColumn.appendChild(newRow); 
             newRow.setAttribute('class', 'row');
             
+            let firstMouseOver = true;
+            let temp; 
+
             newRow.addEventListener('mouseover', () => {
                 newRow.classList.add('pixelate');
 
-                newRow.style.backgroundColor = rgbString (); 
+                 
+
+                if (firstMouseOver) {
+                    
+                    let [firstRGB, secondRGB, thirdRGB] = randRGBString ();
+                    temp = [firstRGB, secondRGB, thirdRGB];
+
+                    newRow.style.backgroundColor = "rgb(" + firstRGB + "," + secondRGB + "," + thirdRGB + ")";
+                    
+                }
+
+                else {
+
+                   let [firstRGB, secondRGB, thirdRGB] = darkerRandRGBString (temp[0], temp[1], temp[2]);
+
+                   newRow.style.backgroundColor = "rgb(" + firstRGB + "," + secondRGB + "," + thirdRGB + ")";
+
+                   temp[0] = firstRGB;
+                   temp[1] = secondRGB; 
+                   temp[2] = thirdRGB; 
+
+                }
+
+                firstMouseOver = false; 
+                
         })
     }
 
@@ -114,11 +141,39 @@ function deletePixels () {
 }
 
 
-function rgbString () {
+function randRGBString () {
     
     rgba = Math.floor(Math.random() * 255);
     rgbb = Math.floor(Math.random() * 255);
     rgbc = Math.floor(Math.random() * 255);
 
-    return "rgb(" + rgba + "," + rgbb + "," + rgbc + ")"; 
+    return [rgba, rgbb, rgbc]; 
+
 }
+
+function darkerRandRGBString (rgbaNext, rgbbNext, rgbcNext) {
+
+    rgba = rgbaNext;
+    rgbb = rgbbNext;
+    rgbc = rgbcNext;
+
+    rgbaDarker = Math.round(rgba - (rgba * 0.10)); 
+   
+    if (rgbaDarker < 0) {
+        rgbaDarker = 0;
+    } 
+    rgbbDarker = Math.round(rgbb - (rgbb * 0.10));
+   
+    if (rgbbDarker < 0) {
+        rgbbDarker = 0;
+    } 
+
+    rgbcDarker = Math.round(rgbc - (rgbc * 0.10));
+    
+    if (rgbcDarker < 0) {
+        rgbcDarker = 0;
+    } 
+
+    return [rgbaDarker, rgbbDarker, rgbcDarker];
+}
+
